@@ -29,8 +29,11 @@ jobs:
       - run:
           name: Build
           command: yarn build
+  
   artifacting:
-  working_directory: /tmp
+    working_directory: /tmp
+    docker:
+      - image: cimg/node:16.10
     steps:
       - run:
           name: Creating Dummy Artifacts
