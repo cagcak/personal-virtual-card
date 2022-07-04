@@ -1,0 +1,49 @@
+.app-card {
+  background: #ffffff;
+  border: 1px solid rgba(22, 42, 76, 0.15);
+  border-radius: 4px;
+  margin: 25px;
+  padding: 0;
+  min-width: 360px;
+
+  .mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 56px;
+
+    .mat-card-title {
+      display: flex;
+      align-items: center;
+      margin: 0px;
+
+      & .heading {
+        position: static;
+        height: 24px;
+        left: 0px;
+        right: 1066px;
+        top: 0px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        color: rgba(22, 42, 76, 0.9);
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+        margin: 0px 8px;
+      }
+    }
+  }
+  .mat-card-content {
+  }
+  .mat-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 56px;
+    margin: 20px 16px 20px auto;
+    padding: 0;
+  }
+}

@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/personal-virtual-card
+    docker:
+      - image: circleci/node:10-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          key: personal-virtual-card-{{ .Branch }}-{{ checksum "yarn-lock.json" }}
+      - run: npm install
+      - save_cache:
+          key: personal-virtual-card-{{ .Branch }}-{{ checksum "yarn-lock.json" }}
+          paths:
+            - 'node_modules'
+      - run: yarn build

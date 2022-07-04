@@ -1,0 +1,38 @@
+<mat-drawer-container class="container">
+  <mat-toolbar class="mat-toolbar">
+    <button mat-raised-button (click)="drawer.open()">
+      <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+    <span *ngIf="!customHeaderOutlet.isActivated" class="heading">{{
+      title$ | async
+    }}</span>
+    <router-outlet #customHeaderOutlet="outlet" name="header"></router-outlet>
+  </mat-toolbar>
+
+  <mat-drawer #drawer class="sidenav" mode="over" [opened]="drawer.opened">
+    <mat-selection-list #navListRef [multiple]="false">
+      <h3 style="text-align: center; margin: 25px auto">
+        çağrı
+        <br />
+        <button mat-raised-button (click)="drawer.close()">
+          <mat-icon>{{ drawer.opened ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+      </h3>
+      <mat-list-option
+        *ngFor="let nav of navs$ | async"
+        [value]="nav"
+        [(selected)]="nav.active"
+        [routerLink]="[nav.route]"
+        routerLinkActive="active">
+        <div class="list-item">
+          <mat-icon>{{ nav.icon }}</mat-icon>
+          <span>{{ nav.label }}</span>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,40 @@
+<div>
+  <app-card
+    *ngFor="let cert of certificates; let index = index"
+    [headerIconName]="cert.iconName"
+    [headerTitle]="cert.title"
+    [actionTemplate]="actionTemplate"
+    [actionTemplateContext]="{ index: index }">
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      ">
+      <img
+        width="291"
+        height="164"
+        src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/dxQOTzjQI2u2mfhkl8LQ"
+        role="presentation"
+        alt="" />
+      <div class="course-listing-title">NestJS Fundamentals</div>
+      <div class="progressbar">
+        <div
+          class="progressbar-fill"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-labelledby="percent-complete-591712"
+          style="min-width: 100%"
+          aria-valuenow="100"></div>
+      </div>
+    </div>
+  </app-card>
+
+  <ng-template #actionTemplate let-context>
+    <button (click)="viewFile(context)" mat-stroked-button color="accent">
+      View File
+    </button>
+  </ng-template>
+</div>

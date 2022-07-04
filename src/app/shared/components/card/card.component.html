@@ -1,0 +1,45 @@
+<mat-card class="app-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon [attr.aria-hidden]="false" aria-label="header icon">{{
+        headerIconName
+      }}</mat-icon>
+      <span class="heading">{{ headerTitle }}</span>
+    </mat-card-title>
+    <div class="menu-icons">
+      <button mat-icon-button aria-label="refresh">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-content #content></ng-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-container *ngIf="actionTemplate; else defaultTemplate">
+      <ng-container
+        *ngTemplateOutlet="
+          actionTemplate;
+          context: { $implicit: actionTemplateContext }
+        "></ng-container>
+    </ng-container>
+    <ng-template #defaultTemplate></ng-template>
+  </mat-card-actions>
+</mat-card>
