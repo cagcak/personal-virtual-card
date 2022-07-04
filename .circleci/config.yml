@@ -38,11 +38,10 @@ jobs:
       - run:
           name: Creating Dummy Artifacts
           command: |
-            echo "my artifact file" > /tmp/art-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+            chmod +x .circleci/push-gh-pages.sh;
+            sh .circleci/push-gh-pages.sh dist;
       - store_artifacts:
-          path: /tmp/art-1
+          path: /tmp/distribution
           destination: artifact-file
       - store_artifacts:
           path: /tmp/artifacts
