@@ -28,22 +28,10 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Build
-          command: yarn build
-
-  artifacting:
-    docker:
-      - image: cimg/node:16.10
-    steps:
-      - run:
-          name: Creating Dummy Artifacts
           command: |
+            yarn build;
             chmod +x .circleci/push-gh-pages.sh;
             sh .circleci/push-gh-pages.sh dist;
-      - store_artifacts:
-          path: /tmp/distribution
-          destination: artifact-file
-      - store_artifacts:
-          path: /tmp/artifacts
 
 workflows:
   # Below is the definition of your workflow.
@@ -53,6 +41,5 @@ workflows:
   sample:
     jobs:
       - build
-      - artifacting
       # For running simple node tests, you could optionally use the node/test job from the orb to replicate and replace the job above in fewer lines.
       # - node/test
