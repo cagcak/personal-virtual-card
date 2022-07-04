@@ -31,7 +31,6 @@ jobs:
           command: yarn build
 
   artifacting:
-    working_directory: /tmp
     docker:
       - image: cimg/node:16.10
     steps:
