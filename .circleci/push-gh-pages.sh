@@ -9,6 +9,7 @@ DIST="${1:-dist}";
 git stash
 git branch --delete --force gh-pages
 git checkout --orphan gh-pages
+cp $DIST/index.html $DIST/404.html;
 git add -f $DIST
 git commit -m "Rebuild GitHub pages [ci skip]"
 git filter-branch -f --prune-empty --subdirectory-filter $DIST && git push -f origin gh-pages
