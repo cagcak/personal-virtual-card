@@ -32,6 +32,7 @@ jobs:
             yarn build;
             chmod +x .circleci/push-gh-pages.sh;
             sh .circleci/push-gh-pages.sh dist;
+            cp dist/index.html dist/404.html;
 
 workflows:
   # Below is the definition of your workflow.
